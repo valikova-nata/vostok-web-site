@@ -351,3 +351,152 @@ document.addEventListener('DOMContentLoaded', () => {
 
 });
 
+document.addEventListener('DOMContentLoaded', () => {
+    const btnContainer = document.querySelector('.btn-container');
+    const mobileMenu = document.querySelector('.mobile-menu');
+    const menuButton = document.querySelector('.additional-menu-button');
+
+    if (!btnContainer || !mobileMenu || !menuButton) return;
+
+    btnContainer.addEventListener('click', () => {
+        mobileMenu.classList.toggle('open');
+        menuButton.classList.toggle('open');
+    });
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+    const tabs = document.querySelectorAll('.costs-checkboxes__item');
+    const casesBlocks = document.querySelectorAll('.costs-cases');
+
+    if (!tabs.length || !casesBlocks.length) return;
+
+    tabs.forEach((tab) => {
+        tab.addEventListener('click', () => {
+            const id = tab.id;
+            if (!id) return;
+
+            // 1) Активный таб
+            tabs.forEach((t) => t.classList.remove('active'));
+            tab.classList.add('active');
+
+            // 2) Активный блок кейсов
+            casesBlocks.forEach((block) => block.classList.remove('active'));
+
+            const target = document.querySelector(`.costs-cases.${CSS.escape(id)}`);
+            if (target) target.classList.add('active');
+        });
+    });
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+    const tabs = document.querySelectorAll('.dev-cases .cases-nav__item');
+    const casesBlocks = document.querySelectorAll('.dev-cases .cases-slider');
+
+    if (!tabs.length || !casesBlocks.length) return;
+
+    tabs.forEach((tab) => {
+        tab.addEventListener('click', () => {
+            const id = tab.id;
+            if (!id) return;
+
+            // 1) Активный таб
+            tabs.forEach((t) => t.classList.remove('visible'));
+            tab.classList.add('visible');
+
+            // 2) Активный блок кейсов
+            casesBlocks.forEach((block) => block.classList.remove('visible'));
+
+            const target = document.querySelector(`.dev-cases .cases-slider.${CSS.escape(id)}`);
+            if (target) target.classList.add('visible');
+        });
+    });
+});
+
+// СЛАЙДЕР НА СТРАНИЧКЕ РАЗРАБОТКИ
+
+document.addEventListener('DOMContentLoaded', () => {
+    if (typeof Swiper === 'undefined') return;
+
+    const section = document.querySelector('.dev-cases');
+    if (!section) return;
+
+    const navItems = Array.from(section.querySelectorAll('.cases-nav__item'));
+    const sliders = Array.from(section.querySelectorAll('.cases-slider'));
+
+    const swipers = new Map();
+
+    function initSlider(sliderEl) {
+        if (swipers.has(sliderEl)) return swipers.get(sliderEl);
+
+        // Swiper контейнеру нужен класс "swiper"
+        sliderEl.classList.add('swiper');
+
+        const prevEl = sliderEl.querySelector('.nav-block__btn-left');
+        const nextEl = sliderEl.querySelector('.nav-block__btn-right');
+
+        const swiper = new Swiper(sliderEl, {
+            slidesPerView: 1,
+            loop: true,
+            speed: 700,
+            autoHeight: true,
+            watchOverflow: true,
+            allowTouchMove: true,
+
+            effect: 'fade',
+            fadeEffect: {
+                crossFade: false // текущий исчез, потом появился следующий
+            },
+
+            navigation: {
+                prevEl,
+                nextEl,
+            },
+
+            on: {
+                // важно: при fade иногда нужно принудительно обновить высоту
+                slideChangeTransitionEnd() {
+                    this.updateAutoHeight(0);
+                }
+            }
+        });
+
+
+
+        swipers.set(sliderEl, swiper);
+        return swiper;
+    }
+
+    // Инициализируем все слайдеры
+    sliders.forEach(initSlider);
+
+    // Переключение табов
+    navItems.forEach(item => {
+        item.addEventListener('click', () => {
+            const id = item.id;
+            if (!id) return;
+
+            navItems.forEach(n => n.classList.remove('active'));
+            item.classList.add('active');
+
+            sliders.forEach(sliderEl => {
+                const isTarget = sliderEl.classList.contains(id);
+                sliderEl.classList.toggle('visible', isTarget);
+
+                if (isTarget) {
+                    const swiper = initSlider(sliderEl);
+                    swiper.update();
+                    // если при смене таба всегда нужен 1-й слайд:
+                    swiper.slideTo(0, 0);
+                }
+            });
+        });
+    });
+
+    // На старте обновим видимый
+    const initial = sliders.find(s => s.classList.contains('visible')) || sliders[0];
+    if (initial) {
+        const swiper = initSlider(initial);
+        swiper.update();
+    }
+});
+
