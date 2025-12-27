@@ -34,7 +34,11 @@ function init() {
     // Рендерер
     renderer = new THREE.WebGLRenderer({ antialias: true });
     renderer.setSize(window.innerWidth, window.innerHeight);
-    document.getElementById('container').appendChild(renderer.domElement);
+    const container = document.getElementById('container');
+
+    if (!container) return;
+
+    container.appendChild(renderer.domElement);
 
     // Камера
     camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 100);

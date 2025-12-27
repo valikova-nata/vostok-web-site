@@ -2201,7 +2201,8 @@ footer.footer .presentation .company-presentation{
   justify-content: flex-start;
 }
 
-.survey-modal .section_imnotrobot{
+.survey-modal .section_imnotrobot,
+.contacts .section_imnotrobot{
   grid-column: span 4;
   justify-content: flex-start;
   display: flex;
@@ -2282,7 +2283,8 @@ footer.footer .presentation .company-presentation{
   margin-top: 20px;
 }
 
-.survey-modal .text-field-block{
+.survey-modal .text-field-bloc,
+.contacts .text-field-block{
   display: flex;
   flex-direction: column;
   align-items: stretch;
@@ -2291,12 +2293,14 @@ footer.footer .presentation .company-presentation{
 }
 
 @media(max-width: 1200px){
-  .survey-modal .text-field-block{
+  .survey-modal .text-field-block,
+  .contacts .text-field-block{
     grid-column: span 4;
   }
 }
 
-.modal .text-field-block input{
+.modal .text-field-block input,
+.contacts .text-field-block input{
   border: none;
   background-color: #fff;
   height: 64px;
@@ -2305,19 +2309,23 @@ footer.footer .presentation .company-presentation{
   border-radius: 20px;
 }
 
-.survey-modal .text-field-block input:not(:placeholder-shown){
+.survey-modal .text-field-block input:not(:placeholder-shown),
+.contacts .text-field-block input:not(:placeholder-shown){
   background-color: #fff;
 }
 
-.survey-modal .text-field-block input::placeholder{
+.survey-modal .text-field-block input::placeholder,
+.contacts .text-field-block input::placeholder{
   color: #A4A4A4;
 }
 
-.modal .text-field-block input.error{
+.modal .text-field-block input.error,
+.contacts .text-field-block input.error{
   background-color: rgba(255, 0, 0, 0.10);
 }
 
-.modal .error-block{
+.modal .error-block,
+.contacts .error-block{
   font-size: 12px;
   color: red;
 }
@@ -2411,7 +2419,8 @@ footer.footer .presentation .company-presentation{
   text-decoration: underline;
 }
 
-.modal .consent-item{
+.modal .consent-item,
+.contacts .consent-item{
   grid-column: span 4;
   display: flex;
   flex-direction: column;
@@ -2425,7 +2434,8 @@ footer.footer .presentation .company-presentation{
   justify-content: flex-start;
 }
 
-.modal .start-project-btn{
+.modal .start-project-btn,
+.contacts .start-project-btn{
   padding: 27px 100px;
   font-family: 'Bounded';
   font-size: 16px;
@@ -2433,6 +2443,7 @@ footer.footer .presentation .company-presentation{
   background-color: #ff8a00;
   border-radius: 20px;
   border:none;
+  cursor:pointer;
 }
 
 @media(max-width: 400px){
@@ -3721,6 +3732,287 @@ section.section.steps .steps-list .steps-list__item .desc{
 .not-only-dev > *{
   position: relative;
   z-index: 1;
+}
+
+body.contacts{
+  background-color: #F1F1F1;
+}
+
+.contacts .header{
+  position: relative;
+  color: #000;
+  border-bottom: 1px solid #D5D5D5;
+}
+
+.contacts .main-contacts-list .section__container > div:last-of-type{
+  border-left: 1px solid #D5D5D5;
+}
+
+.contacts .main-contacts-list .section__container > div {
+  padding-top: 50px;
+  justify-content: flex-start;
+}
+
+.contacts .header .main-navigation__list a{
+  color: #000;
+}
+
+.contacts .header .phone-block{
+  color: #000;
+}
+
+.contacts main{
+  min-height: 50vh;
+  padding-bottom: 100px;
+}
+
+.contacts .main-contacts-list .title-block{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 50px;
+}
+
+.contacts .list-block{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.contacts .list-block ul{
+  display: flex;
+  padding-left: 40px;
+  width: 100%;
+  flex-direction: column;
+  list-style: none;
+  gap: 50px;
+  border-bottom: 1px solid #D5D5D5;
+  padding-bottom: 40px;
+}
+
+.contacts .list-block ul li{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.contacts .list-block ul .title{
+  color: #B1B1B1;
+  font-size: 20px;
+}
+
+.contacts .list-block ul a{
+  text-decoration: unset;
+  color: #000;
+  font-family: 'Bounded';
+  font-size: 32px;
+  transition: 0.3s;
+}
+
+.contacts .list-block ul a:hover{
+  color: #FF7100;
+}
+
+.contacts .tg-btn-link{
+  text-decoration: unset;
+  padding: 40px;
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  color: #000;
+  transition: 0.3s;
+  border-bottom: 1px solid #D5D5D5;
+}
+
+.contacts .other{
+  padding: 40px;
+}
+
+.contacts .other img{
+  width: 100%;
+  height: auto;
+}
+
+.contacts .other .link{
+  display: flex;
+  align-items: center;
+  text-decoration: unset;
+  color: #000;
+  gap: 20px;
+  font-size: 16px;
+  margin-top: 30px;
+  transition: 0.3s;
+  font-weight: 600;
+}
+
+.contacts .other .link span:last-of-type{
+  font-family: 'Bounded';
+  width: 200px;
+  display: block;
+}
+
+.contacts .other .link:hover{
+  color: #FF7100;
+}
+
+.contacts .other .link .file-icon{
+  width: 80px;
+  height: 50px;
+  border: 1px solid #C6C6C6;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: 0.5s;
+  font-weight: bold;
+}
+
+.contacts .other .link:hover .file-icon{
+  background-color: #FF7100;
+  border-color: #FF7100;
+  color: #fff;
+}
+
+.contacts .footer{
+  border-top: 1px solid #D5D5D5;
+  padding-top: 50px;
+}
+
+.contacts .footer__item-start,
+.contacts .section__politics-item{
+  grid-column: span 4;
+}
+
+.contacts .section__politics-item .politic-block{
+  flex-direction: row;
+}
+
+.tg-btn-link span{
+  font-family: 'Bounded';
+  font-size: 20px;
+}
+
+.tg-btn-link:hover{
+  color: #FF7100;
+}
+
+.contacts .form-section form{
+    display: grid;
+    grid-template-columns: repeat(2);
+    gap: 20px;
+    margin: 0 auto;
+    box-sizing: border-box;
+    align-items: flex-start;
+}
+
+.contacts .form-section{
+  border-top: 1px solid #D5D5D5;
+  margin-top: 50px;
+}
+
+.contacts .form-section .title-block{
+  justify-content: flex-start;
+  align-items: flex-start;
+  padding-top: 50px;
+  font-size: 42px;
+  font-family: 'Bounded';
+  font-weight: bold;
+}
+
+.contacts .form-section .form-block{
+  border-left: 1px solid #D5D5D5;
+  padding-top: 50px;
+}
+
+.contacts .form-section .form-block .text-field-block{
+  display: flex;
+  flex-direction: column;
+  grid-column: span 2;
+}
+
+@media(max-width: 800px){
+  .contacts .form-section .form-block .text-field-block{
+  grid-column: span 4;
+  }
+}
+
+.contacts form{
+  padding: 0 !important;
+  padding-left: 40px !important;
+}
+
+.contacts .form-section .form-block .text-field-block input{
+  width: 100%;
+  height: 64px;
+}
+
+.contacts .section__container{
+  gap: 0 !important;
+}
+
+.contacts .politic-block{
+  margin-top: 15px;
+}
+
+.contacts .submit-item{
+  grid-column: span 4;
+  justify-content: flex-start;
+}
+
+@media(max-width: 1400px){
+  .additional-menu-button span{
+    background-color: #000;
+  }
+}
+
+@media(max-width: 1300px){
+  .contacts .section__container .section__item.span-2:not(.nav-section){
+    grid-column: span 4;
+  }
+
+  .contacts .list-block{
+    margin-top: 50px;
+  }
+
+  .contacts .form-block{
+    margin-top: 50px;
+  }
+}
+
+@media(max-width: 500px){
+  .contacts .list-block ul a{
+    font-size: 20px;
+  }
+
+  .tg-btn-link span {
+    font-size: 16px;
+  }
+
+  .contacts .main-contacts-list #header__offer-button{
+    display: none;
+  }
+}
+
+.contacts .mobile-menu{
+  background-color: #F1F1F1;
+}
+
+.contacts .mobile-menu .main-navigation__list{
+  margin-top: 30px;
+}
+
+.contacts .mobile-menu .main-navigation__list a{
+  color: #000;
+}
+
+.contacts .mobile-menu .phone-block{
+  color: #000;
+}
+
+@media(max-width: 500px){
+  .contacts .section__politics-item .politic-block{
+    flex-direction: column;
+  }
 }
 
 /* ===== Правый верхний угол (684x270) ===== */
