@@ -4015,6 +4015,21 @@ body.contacts{
   }
 }
 
+/* фиксы модалок 29.12 */
+.survey-modal .section__item{
+  flex-direction: column;
+  gap: 10px;
+  align-items: flex-start;
+}
+
+.survey-modal .section__item input{
+  width: 100%;
+}
+
+.contacts .survey-modal .section__container {
+  gap: var(--gap) !important;
+}
+
 /* ===== Правый верхний угол (684x270) ===== */
 .not-only-dev::before{
   content: "";
