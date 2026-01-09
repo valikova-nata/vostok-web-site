@@ -4030,6 +4030,88 @@ body.contacts{
   gap: var(--gap) !important;
 }
 
+.costs-case .cover-case-text-block{
+  display: flex;
+  gap: 30px;
+  justify-content: space-between;
+  width: 100%;
+  overflow: hidden;
+  transition:
+    opacity 0s ease 0s,
+    left 1s ease 0s;
+  position: absolute;
+  left: 150%;
+  top: 0;
+  color: #fff;
+  opacity: 0;
+}
+
+.costs-case:hover .cover-case-text-block{
+  left:0;
+  opacity: 100%;
+}
+
+.costs-case:hover img{
+  opacity: 0;
+  z-index: 500;
+}
+
+.costs-case .cover-case-text-block > ul{
+  width: 45%;
+  display: flex;
+  flex-direction: column;
+  list-style: none;
+  font-size: 14px;
+  gap: 20px;
+  font-family: 'Onest';
+}
+
+.costs-case .cover-part{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+.costs-case:hover{
+  background-color: #F06A00 !important;
+  color: #fff !important;
+}
+
+/* Sticky-блок слева в секции steps */
+.dev section.section.steps .section__item.text{
+  position: sticky;
+  top: 40px;          /* при необходимости подстрой (часто 20–80px) */
+  align-self: start;  /* важно для grid */
+  height: fit-content;
+  z-index: 2;
+}
+
+/* На адаптиве у вас секция перестраивается в колонку — sticky обычно не нужен */
+@media (max-width: 1400px){
+  .dev section.section.steps .section__item.text{
+    position: static;
+  }
+}
+
+.contacts /* Фиксируем заголовок + кнопку в секции контактов */
+section.section.main-contacts-list .section__item.title-block {
+  position: sticky;
+  top: 40px;          /* подстрой под хедер */
+  align-self: start;  /* обязательно для grid */
+  height: fit-content;
+  z-index: 2;
+}
+
+.contacts section.section.form-section .section__item.title-block{
+  position: sticky;
+  top: 40px;          /* подстрой под хедер */
+  align-self: start;  /* обязательно для grid */
+  height: fit-content;
+  z-index: 2;
+}
+
 /* ===== Правый верхний угол (684x270) ===== */
 .not-only-dev::before{
   content: "";
